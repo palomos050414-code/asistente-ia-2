@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Carbón Tamesino · Asistente de ventas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Fondo con degradado azul -->
+  <div class="fondo" aria-hidden="true"></div>
+
+  <!-- Encabezado: logo a la izquierda y botón de clave a la derecha -->
+  <header class="barra">
+    <a class="marca" href="#" aria-label="Carbón Tamesino">
+      <svg class="marca-icono" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M16 3c1 4 6 7 6 13a6 6 0 0 1-12 0c0-2 1-3.5 2-5 .3 2 1.2 3 2.5 3C14 10 15 7 16 3Z" fill="currentColor"/>
+        <rect x="4" y="25" width="24" height="3" rx="1.5" fill="currentColor" opacity=".5"/>
+      </svg>
+      <span class="marca-texto">Carbón Tamesino</span>
+    </a>
+    <button class="boton-clave" id="abrirClave" type="button" aria-expanded="false" aria-controls="panelClave">
+      <span class="punto-estado" id="puntoEstado"></span>
+      Clave API
+    </button>
+  </header>
+
+  <!-- Casilla para pegar la clave de OpenRouter (oculta hasta abrirla) -->
+  <section class="panel-clave" id="panelClave" hidden>
+    <label for="inputClave">Clave de OpenRouter</label>
+    <div class="fila-clave">
+      <input id="inputClave" type="password" placeholder="Pega aquí tu clave (sk-or-...)" autocomplete="off" spellcheck="false">
+
+      <button type="button" id="guardarClave" class="btn-primario">Guardar</button>
+      <button type="button" id="borrarClave" class="btn-secundario">Borrar</button>
+    </div>
+    <p class="ayuda" id="estadoClave">Se guarda solo en esta pestaña y se borra al cerrarla.</p>
+  </section>
+
+  <main class="principal" id="principal">
+    <!-- Portada: aviso y título centrado -->
+    <div class="portada" id="portada">
+      <p class="aviso">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2Z" fill="currentColor"/></svg>
+        Cortes de res, cerdo y pollo preparados para el carbón. Pregúntame y armamos tu pedido.
+      </p>
+      <h1>Del fuego a tu mesa</h1>
+    </div>
+
+    <!-- Historial del chat (aparece al enviar el primer mensaje) -->
+    <div class="mensajes" id="mensajes" role="log" aria-live="polite" hidden></div>
+
+    <!-- Caja de texto redondeada con chips y botón de envío circular -->
+    <form class="compositor" id="formulario" autocomplete="off">
+      <textarea id="entrada" rows="2" placeholder="Pregunta lo que quieras, te ayudo con tu pedido" aria-label="Escribe tu mensaje"></textarea>
+      <div class="compositor-pie">
+        <div class="chips">
+          <button type="button" class="chip" data-texto="¿Qué cortes me recomiendas para una parrillada?">Recomiéndame</button>
+          <button type="button" class="chip" data-texto="Quiero hacer un pedido">Hacer pedido</button>
+        </div>
+        <button type="submit" class="enviar" id="enviar" aria-label="Enviar mensaje">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+
+
+    <!-- Botones tipo píldora -->
+    <div class="atajos" id="atajos">
+      <button type="button" class="atajo" data-texto="¿Qué cortes de carne tienen disponibles?">Ver cortes</button>
+      <button type="button" class="atajo" data-texto="Quiero armar una parrillada para 6 personas">Armar parrillada</button>
+      <button type="button" class="atajo" data-texto="¿Cómo funciona el pedido y la entrega?">Pedido y entrega</button>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
